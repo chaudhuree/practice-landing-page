@@ -35,9 +35,9 @@
         clip-path: circle(50% at 50% 100%);
         z-index: 6;
       }
-      .countdown-container{
+      .countdown-container {
         right: 10px;
-        
+
         z-index: 9;
       }
       .conuntdown {
@@ -47,7 +47,6 @@
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
         border-radius: 16px;
-
       }
       .timestamp {
         /* From https://css.glass */
@@ -74,99 +73,177 @@
         backdrop-filter: blur(6.5px);
         -webkit-backdrop-filter: blur(6.5px);
       }
-      .timer{
+      .timer {
         top: 10%;
         right: 80px;
         transform: rotate(5deg);
       }
-      .stopwatch{
+      .stopwatch {
         transform: rotate(-10deg);
         top: 52%;
       }
+      @media only screen and (max-width: 768px) {
+        .half-circle-two {
+          top: 40%;
+        }
+      }
+      @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        .half-circle-two {
+          top: 43.3%;
+        }
+      }
+        @media only screen and (min-width: 1024px) and (max-width: 1280px) {
+          .half-circle-two {
+            top: 47.5%;
+          }
+          .timer {
+            top: 25%;
+            right: 80px;
+            transform: rotate(10deg);
+          }
+          .stopwatch {
+            transform: rotate(-10deg);
+            top: 46%;
+          }
+        }
+      
+        @media only screen and (min-width: 1440px) {
+          .half-circle-two {
+            top: 54.9%;
+          }
+          .timer {
+            top: 25%;
+            right: 80px;
+            transform: rotate(10deg);
+          }
+          .stopwatch {
+            transform: rotate(-10deg);
+            top: 53%;
+          }
+        }
+        @media only screen and (min-width: 2560px) {
+          .half-circle-two {
+            top: 56.5%;
+          }
+          .timer {
+            top: 30%;
+            right: 100px;
+            transform: rotate(10deg);
+          }
+          .stopwatch {
+            transform: rotate(-10deg);
+            right: 60px;
+            top: 48%;
+          }
+          .heading {
+            font-size: 12rem !important;
+          }
+          .subheading{
+            font-size: 3rem !important;
+          }
+          .subheading-2{
+            font-size: 4rem !important;
+          }
+          .avatar{
+            padding: 40px;
+            font-size: 2rem;
+            margin-right:10px ;
+          }
+        
+        }
     </style>
   </head>
   <body>
     <div
       class="h-screen overflow-hidden relative bg-gray-900 py-[60px] px-[90px]"
     >
-      <div class="half-circle opacity-[60%]"></div>
+      <div class="half-circle opacity-[60%] max-md:hidden"></div>
       <div class="half-circle-two opacity-[60%]"></div>
-    <div class="absolute countdown-container timer"> 
-      <div class=" conuntdown border-2 py-2 px-4 flex gap-4">
-        <div class="left">
-          <p class="text-white text-9xl leading-[85px]">
-            59<span class="text-6xl">sec</span> <br />2
-            <span class="text-6xl -ml-10">min</span>
-          </p>
-        </div>
-        <div class="right flex flex-col gap-3">
-          <div class="px-2 py-4 timestamp">
-            <p class="text-white text-xl mb-2">Timestamp</p>
-            <p
-              class="p-2 text-white rounded-lg w-[200px] click flex justify-between items-center"
-            >
-              <span>Click Here</span> <i class="ri-flag-line"></i>
+
+
+      <div class="absolute countdown-container timer max-lg:hidden">
+        <div class="conuntdown border-2 py-2 px-4 flex gap-4">
+          <div class="left">
+            <p class="time_details text-white lg:text-6xl xl:text-9xl lg:leading-[60px] xl:leading-[85px]">
+              59<span class="text-6xl">sec</span> <br />2
+              <span class="text-6xl -ml-4 xl:-ml-10">min</span>
             </p>
           </div>
-          <div class="play py-3 px-5 flex items-center justify-between">
-            <i class="ri-arrow-right-circle-line text-2xl"></i>
-            <i class="ri-pause-circle-line text-2xl"></i>
-            <i class="ri-arrow-left-circle-line text-2xl"></i>
+          <div class="right flex flex-col gap-2 xl:gap-3">
+            <div class="xl:px-2 lg:px-2 xl:py-4 lg:py-2 timestamp">
+              <p class="text-white  xl:text-xl mb-2">Timestamp</p>
+              <p
+                class=" p-1 xl:p-2 text-white rounded-lg w-[200px] click flex justify-between items-center"
+              >
+                <span>Click Here</span> <i class="ri-flag-line"></i>
+              </p>
+            </div>
+            <div class="play py-1 xl:py-3 px-5 flex items-center justify-between">
+              <i class="ri-arrow-right-circle-line text-2xl"></i>
+              <i class="ri-pause-circle-line text-2xl"></i>
+              <i class="ri-arrow-left-circle-line text-2xl"></i>
+            </div>
           </div>
         </div>
+        <p class="text-center text-white text-xl xl:text-2xl mt-4">Timer Widget</p>
       </div>
-      <p class="text-center text-white text-2xl mt-4">Timer Widget</p>
-    </div>
-    <div class="absolute countdown-container stopwatch"> 
-      <div class=" conuntdown border-2 py-2 px-4 flex gap-4">
-        <div class="left">
-          <p class="text-white text-9xl leading-[85px]">
-            24<span class="text-6xl">sec</span> <br />00
-            <span class="text-6xl -ml-10">min</span>
-          </p>
-        </div>
-        <div class="right flex flex-col gap-3">
-          <div class="px-2 py-4 timestamp">
-            <div class="text-white text-xl mb-2 flex items-center justify-between"><p>Target Time:</p><p class="font-semibold">1<span class="text-gray-400">mins</span></p></div>
-            <p
-              class="p-2 text-white rounded-lg w-[200px] click flex justify-between items-center"
-            >
-              <span>Click Here</span> <i class="ri-flag-line"></i>
+      <div class="absolute countdown-container stopwatch max-lg:hidden">
+        <div class="conuntdown border-2 py-2 px-4 flex gap-4">
+          <div class="left">
+            <p class="text-white lg:text-6xl xl:text-9xl lg:leading-[60px] xl:leading-[85px]">
+              24<span class="text-6xl">sec</span> <br />00
+              <span class="text-6xl -ml-4 xl:-ml-10">min</span>
             </p>
           </div>
-          <div class="play py-3 px-5 flex items-center justify-between">
-            <i class="ri-arrow-right-circle-line text-2xl"></i>
-            <i class="ri-pause-circle-line text-2xl"></i>
-            <i class="ri-arrow-left-circle-line text-2xl"></i>
+          <div class="right flex flex-col gap-2 xl:gap-3">
+            <div class="xl:px-2 lg:px-2 xl:py-4 lg:py-2 timestamp">
+              <div
+              class="text-white  xl:text-xl mb-2 flex items-center justify-between"
+            >
+              <p>Target Time:</p>
+              <p class="font-semibold">
+                1<span class="text-gray-400">mins</span>
+              </p>
+            </div>
+              <p
+                class=" p-1 xl:p-2 text-white rounded-lg w-[200px] click flex justify-between items-center"
+              >
+                <span>Click Here</span> <i class="ri-flag-line"></i>
+              </p>
+            </div>
+            <div class="play py-1 xl:py-3 px-5 flex items-center justify-between">
+              <i class="ri-arrow-right-circle-line text-2xl"></i>
+              <i class="ri-pause-circle-line text-2xl"></i>
+              <i class="ri-arrow-left-circle-line text-2xl"></i>
+            </div>
           </div>
         </div>
+        <p class="text-center text-white text-xl xl:text-2xl mt-4">Stopwatch Widget</p>
       </div>
-      <p class="text-center text-white text-2xl mt-4">Timer Widget</p>
-    </div>
-      
+ 
 
       <!-- Your content goes here -->
       <div class="relative z-10 text-white px-2">
-        <h1 class="font-bold leading-[90px] text-8xl">
+        <h1
+          class="font-bold leading-[35px] md:leading-[30px] text-4xl lg:text-6xl xl:text-8xl max-lg:mt-[80px] heading"
+        >
           Timer<span class="text-gray-400 opacity-[.7]">&</span><br />Stopwatch
           <br />Widget <br /><span class="text-gray-400 opacity-[.7]"
             >with Variables</span
           >
         </h1>
-        <p class="mt-4 text-4xl">for iOS in Figma + Tutorials</p>
+        <p class="mt-4 text-xl lg:text-2xl xl:text-4xl subheading">for iOS in Figma + Tutorials</p>
 
-        <div class="mt-[60px] flex gap-4 items-center">
+        <div class="mt-10 md:mt-[60px] flex gap-4 items-center">
           <span
-            class="flex justify-center items-center size-10 bg-white rounded-full"
+            class="flex justify-center items-center size-6 md:size-10 bg-white rounded-full avatar"
             >😎</span
           >
-          <span class="font-bold text-4xl">Way Of Mani</span>
+          <span class="font-bold text-2xl lg:text-3xl xl:text-4xl subheading-2">Way Of Mani</span>
         </div>
       </div>
     </div>
 
-    <script>
-      // JavaScript can be added here if needed
-    </script>
+
   </body>
 </html>
