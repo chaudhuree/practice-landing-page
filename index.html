@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Half Circle Background with Clip-path</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      .half-circle {
+        width: 60vw;
+        height: 60vw;
+        background: linear-gradient(to right, #8310b9b9, #3b82f6);
+        border: 1px solid rgba(87, 255, 162, 0.3);
+        position: absolute;
+        top: 30%;
+        left: 12%;
+        transform: translate(-50%, -50%) rotate(-38deg);
+        z-index: -1;
+        clip-path: circle(50% at 50% 100%);
+        z-index: 6;
+      }
+      .half-circle-two {
+        width: 60vw;
+        height: 60vw;
+        background: linear-gradient(to right, #10b981, #3b82f6);
+        position: absolute;
+        top: 63.3%;
+        left: 90%;
+        transform: translate(-50%, -50%) rotate(141.7deg);
+        z-index: -1;
+        clip-path: circle(50% at 50% 100%);
+        z-index: 6;
+      }
+      .countdown-container{
+        right: 10px;
+        
+        z-index: 9;
+      }
+      .conuntdown {
+        /* From https://css.glass */
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border-radius: 16px;
+
+      }
+      .timestamp {
+        /* From https://css.glass */
+        background: rgba(37, 10, 10, 0.438);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+
+        border-radius: 16px;
+      }
+      .click {
+        background: rgba(77, 22, 22, 0.027);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+      }
+      .play {
+        /* From https://css.glass */
+        background: rgba(37, 10, 10, 0.66);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(6.5px);
+        -webkit-backdrop-filter: blur(6.5px);
+      }
+      .timer{
+        top: 10%;
+        right: 80px;
+        transform: rotate(5deg);
+      }
+      .stopwatch{
+        transform: rotate(-10deg);
+        top: 52%;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="h-screen overflow-hidden relative bg-gray-900 py-[60px] px-[90px]"
+    >
+      <div class="half-circle opacity-[60%]"></div>
+      <div class="half-circle-two opacity-[60%]"></div>
+    <div class="absolute countdown-container timer"> 
+      <div class=" conuntdown border-2 py-2 px-4 flex gap-4">
+        <div class="left">
+          <p class="text-white text-9xl leading-[85px]">
+            59<span class="text-6xl">sec</span> <br />2
+            <span class="text-6xl -ml-10">min</span>
+          </p>
+        </div>
+        <div class="right flex flex-col gap-3">
+          <div class="px-2 py-4 timestamp">
+            <p class="text-white text-xl mb-2">Timestamp</p>
+            <p
+              class="p-2 text-white rounded-lg w-[200px] click flex justify-between items-center"
+            >
+              <span>Click Here</span> <i class="ri-flag-line"></i>
+            </p>
+          </div>
+          <div class="play py-3 px-5 flex items-center justify-between">
+            <i class="ri-arrow-right-circle-line text-2xl"></i>
+            <i class="ri-pause-circle-line text-2xl"></i>
+            <i class="ri-arrow-left-circle-line text-2xl"></i>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-white text-2xl mt-4">Timer Widget</p>
+    </div>
+    <div class="absolute countdown-container stopwatch"> 
+      <div class=" conuntdown border-2 py-2 px-4 flex gap-4">
+        <div class="left">
+          <p class="text-white text-9xl leading-[85px]">
+            24<span class="text-6xl">sec</span> <br />00
+            <span class="text-6xl -ml-10">min</span>
+          </p>
+        </div>
+        <div class="right flex flex-col gap-3">
+          <div class="px-2 py-4 timestamp">
+            <div class="text-white text-xl mb-2 flex items-center justify-between"><p>Target Time:</p><p class="font-semibold">1<span class="text-gray-400">mins</span></p></div>
+            <p
+              class="p-2 text-white rounded-lg w-[200px] click flex justify-between items-center"
+            >
+              <span>Click Here</span> <i class="ri-flag-line"></i>
+            </p>
+          </div>
+          <div class="play py-3 px-5 flex items-center justify-between">
+            <i class="ri-arrow-right-circle-line text-2xl"></i>
+            <i class="ri-pause-circle-line text-2xl"></i>
+            <i class="ri-arrow-left-circle-line text-2xl"></i>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-white text-2xl mt-4">Timer Widget</p>
+    </div>
+      
+
+      <!-- Your content goes here -->
+      <div class="relative z-10 text-white px-2">
+        <h1 class="font-bold leading-[90px] text-8xl">
+          Timer<span class="text-gray-400 opacity-[.7]">&</span><br />Stopwatch
+          <br />Widget <br /><span class="text-gray-400 opacity-[.7]"
+            >with Variables</span
+          >
+        </h1>
+        <p class="mt-4 text-4xl">for iOS in Figma + Tutorials</p>
+
+        <div class="mt-[60px] flex gap-4 items-center">
+          <span
+            class="flex justify-center items-center size-10 bg-white rounded-full"
+            >😎</span
+          >
+          <span class="font-bold text-4xl">Way Of Mani</span>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // JavaScript can be added here if needed
+    </script>
+  </body>
+</html>
